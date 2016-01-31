@@ -14,3 +14,5 @@
 $app->get('/', function() use ($app) {
     return $app->welcome();
 });
+
+$app->get('agenda/', ['as' => 'agenda.index', 'uses' => 'AgendaController@index']);
