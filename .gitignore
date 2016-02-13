@@ -1,4 +1,4 @@
 /vendor
 .env
 .idea/
-public/libs/
+node_modules/
