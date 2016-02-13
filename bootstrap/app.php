@@ -55,13 +55,13 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
+ $app->middleware([
 //     // Illuminate\Cookie\Middleware\EncryptCookies::class,
 //     // Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
-//     // Illuminate\Session\Middleware\StartSession::class,
+    Illuminate\Session\Middleware\StartSession::class,
 //     // Illuminate\View\Middleware\ShareErrorsFromSession::class,
 //     // Laravel\Lumen\Http\Middleware\VerifyCsrfToken::class,
-// ]);
+ ]);
 
 // $app->routeMiddleware([
 
@@ -78,7 +78,7 @@ $app->singleton(
 |
 */
 
-// $app->register(App\Providers\AppServiceProvider::class);
+ $app->register(CodeAgenda\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
