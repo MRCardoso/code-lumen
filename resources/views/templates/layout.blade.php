@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-        <title>Code Agenda - (30181811 roberto)</title>
+        <title>Code Agenda</title>
 
         <!-- Bootstrap -->
         <link href="{{ url('/css/app.css') }}" rel="stylesheet">
@@ -22,13 +22,10 @@
             <div class="row">
                 <div class="col-lg-12 page-header">
                     <div class="pull-left">
-                        <h1>
-                            code.education
-                            <small>
-                                <i class="glyphicon glyphicon-phone-alt"></i>
-                                <a href="{{ route('notebook.index') }}">Agenda Telefônica</a>
-                            </small>
-                        </h1>
+                        <h3>
+                            <i class="glyphicon glyphicon-phone-alt"></i>
+                            <a href="{{ route('notebook.index') }}">Agenda Telefônica</a>
+                        </h3>
                     </div>
                     <div class="pull-right">
                         <form class="form-inline" action="{{ route('notebook.search') }}" method="post">
@@ -43,14 +40,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12">
-                    @foreach($letters as $letter)
-                    <a href="{{ route('notebook.letter', ['letter' => $letter]) }}" class="btn btn-primary btn-xs">{{ $letter }}</a>
-                    @endforeach
-                    <div class="btn-row pull-right">
-                        {{--<a href="#" class="btn btn-primary">New Contact</a>--}}
-                    </div>
-                </div>
+                @yield('header')
             </div>
             <div class="row">
                 @yield('content')

@@ -23,11 +23,53 @@ $app->post('/search', [
     'as' => 'notebook.search',
     'uses' => 'NotebookController@search'
 ]);
+/*
+ | ----------------------------------------------------------
+ | Person
+ | ----------------------------------------------------------
+ */
 $app->delete('contact/{id}/destroy', [
     'as' => 'person.destroy',
     'uses' => 'PersonController@destroy'
 ]);
-$app->delete('phone/{id}/destroy', [
+$app->get('contact/create', [
+    'as' => 'person.create',
+    'uses' => 'PersonController@create'
+]);
+$app->post('contact', [
+    'as' => 'person.store',
+    'uses' => 'PersonController@store'
+]);
+$app->get('contact/edit/{id}', [
+    'as' => 'person.edit',
+    'uses' => 'PersonController@edit'
+]);
+$app->put('contact/{id}', [
+    'as' => 'person.update',
+    'uses' => 'PersonController@update'
+]);
+/*
+ | ----------------------------------------------------------
+ | Phone
+ | ----------------------------------------------------------
+ */
+$app->get('person/{person_id}/phone/create', [
+    'as' => 'phone.create',
+    'uses' => 'PhoneController@create'
+]);
+$app->post('person/{person_id}/phone', [
+    'as' => 'phone.store',
+    'uses' => 'PhoneController@store'
+]);
+$app->get('person/{person_id}/phone/{id}/edit', [
+    'as' => 'phone.edit',
+    'uses' => 'PhoneController@edit'
+]);
+$app->put('person/{person_id}/phone/{id}', [
+    'as' => 'phone.update',
+    'uses' => 'PhoneController@update'
+]);
+$app->delete('person/{person_id}/phone/{id}/destroy', [
     'as' => 'phone.destroy',
     'uses' => 'PhoneController@destroy'
 ]);

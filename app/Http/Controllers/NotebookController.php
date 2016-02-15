@@ -9,7 +9,8 @@ class NotebookController extends Controller
 {
     public function index($letter = 'A')
     {
-        $persons = Person::where('nickname', 'like', "{$letter}%")->get();
+        $persons = Person::where('nickname', 'ilike', "{$letter}%")->orderBy('id', 'DESC')->get();
+
         return view('notebook.index', compact('persons'));
     }
 

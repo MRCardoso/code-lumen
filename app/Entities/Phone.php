@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mrcardoso
- * Date: 13/02/16
- * Time: 11:52
- */
-
 namespace CodeAgenda\Entities;
 
 
@@ -15,7 +8,7 @@ class Phone extends Model
 {
     protected $table = "phone";
 
-    protected $fillable = ["description", "country_code", "number"];
+    protected $fillable = ["person_id", "description", "country_code", "number"];
 
     public function person()
     {
