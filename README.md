@@ -14,3 +14,6 @@ config the environment
     * Entitie: is responsible by manipulation and persists of the data
 * View: render the response of the Controller
 * Route: makes the intermediation from request(view) and response(controller)
+
+### thank you very much 'code.education' for more this knowledge acquired 
+
