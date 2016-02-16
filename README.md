@@ -1,12 +1,13 @@
-config the environment
-    
-### run the command "bower install"
-    to download the dependency js and css
+## download lumen 
+    run the command "composer update"
 
-### run the command "gulp --production"
-    to compile the files .css,less and js
+## download the dependency js and css
+    run the command "bower install"
 
-## was add the layers service and validators in the app
+## to compile the files .css,less and js
+    run the command "gulp --production"
+
+### was add the layers service and validators in the app
 
 * Controller: makes the intermediation of the view with Entitie
     * Service: is responsible by the business rule, comunication with Entitie
