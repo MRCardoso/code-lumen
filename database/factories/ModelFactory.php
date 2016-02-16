@@ -34,3 +34,11 @@ $factory->define(\CodeAgenda\Entities\Phone::class, function($faker){
         'person_id' => rand(1, 30)
     ];
 });
+$factory->define(\CodeAgenda\Entities\Email::class, function($faker){
+    return [
+        'email' => $faker->email,
+        'type' => $faker->randomElement(['personal', 'commercial']),
+        'status' => rand(0,1),
+        'person_id' => rand(1, 30)
+    ];
+});

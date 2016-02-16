@@ -4,7 +4,7 @@
     <div class="content">
         <ul class="breadcrumb">
             <li><a href="{{ route('notebook.index') }}">Home</a></li>
-            <li>Phone</li>
+            <li>Telefone</li>
         </ul>
     </div>
 @endsection
@@ -33,15 +33,15 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-3">Country Code</label>
+                <label class="control-label col-md-3">Código do pais</label>
                 <div class="col-md-6">
-                    <input type="text" name="country_code" value="{{ isset($phone) ? $phone->country_code : old('country_code') }}" class="form-control" placeholder="Country code">
+                    <input type="text" name="country_code" value="{{ isset($phone) ? $phone->country_code : old('country_code') }}" class="form-control" placeholder="Código do pais">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-3">Number</label>
+                <label class="control-label col-md-3">Número</label>
                 <div class="col-md-6">
-                    <input type="text" name="number" value="{{ isset($phone) ? $phone->number : old('number') }}" class="form-control" placeholder="Number">
+                    <input type="text" name="number" value="{{ isset($phone) ? $phone->number : old('number') }}" class="form-control" placeholder="Número">
                 </div>
             </div>
             @include('partials._actions')

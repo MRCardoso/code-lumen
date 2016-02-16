@@ -4,7 +4,7 @@
     <div class="content">
         <ul class="breadcrumb">
             <li><a href="{{ route('notebook.index') }}">Home</a></li>
-            <li>Contact</li>
+            <li>Contato</li>
         </ul>
     </div>
 @endsection
@@ -20,7 +20,7 @@
             @include('partials._errors')
             <div class="form-group {{ $errors->has('sex') ? 'has-error' : '' }}">
                 <label class="control-label col-md-3">
-                    Sex
+                    Sexo
                 </label>
                 <div class="col-md-6">
                     <div class="radio-inline">
@@ -32,15 +32,15 @@
                 </div>
             </div>
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                <label class="control-label col-md-3">Email address</label>
+                <label class="control-label col-md-3">Nome</label>
                 <div class="col-md-6">
-                    <input type="text" name="name" value="{{ isset($person) ? $person->name : old('name') }}" class="form-control" placeholder="name">
+                    <input type="text" name="name" value="{{ isset($person) ? $person->name : old('name') }}" class="form-control" placeholder="Nome">
                 </div>
             </div>
             <div class="form-group {{ $errors->has('nickname') ? 'has-error' : '' }}">
-                <label class="control-label col-md-3">Nickname</label>
+                <label class="control-label col-md-3">Apelido</label>
                 <div class="col-md-6">
-                    <input type="text" name="nickname" value="{{ isset($person) ? $person->nickname : old('nickname') }}" class="form-control" placeholder="Nickname">
+                    <input type="text" name="nickname" value="{{ isset($person) ? $person->nickname : old('nickname') }}" class="form-control" placeholder="Apelido">
                 </div>
             </div>
             @include('partials._actions')

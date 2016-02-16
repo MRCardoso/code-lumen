@@ -51,6 +51,8 @@ class PhoneService
         $phone = $this->model->create($data);
         $letter = strtoupper(substr($phone->person->nickname,0,1));
 
+        session(['success' => "o telefone [{$phone->maskNumber}] foi criado com sucesso!"]);
+
         return redirect()->route('notebook.letter', compact('letter'));
     }
 
@@ -72,10 +74,12 @@ class PhoneService
         $validator = $this->validator->validateData($data);
 
         if( $validator->fails() )
-            return redirect()->route('phone.edit')->withErrors($validator)->withInput();
+            return redirect()->route('phone.edit', ['id' => $id,'person_id'=>$person_id ])->withErrors($validator)->withInput();
 
         $phone->fill($data)->save();
         $letter = strtoupper(substr($phone->person->nickname,0,1));
+
+        session(['success' => "o telefone [{$phone->maskNumber}] foi atualizado com sucesso!"]);
 
         return redirect()->route('notebook.letter', compact('letter'));
     }
@@ -90,10 +94,14 @@ class PhoneService
     public function destroy($person_id, $id)
     {
         $phone = $this->model->where(['person_id' => $person_id,'id' => $id])->first();
+        $maskNumber = $phone->maskNumber;
 
         if( count($phone) != 1) return view('errors.404');
 
-        $phone->delete();
+        if( $phone->delete() )
+            session(['success' => "o telefone [{$maskNumber}] foi removido com sucesso!"]);
+        else
+            session(['error' => "o telefone [{$maskNumber}] não foi removido!"]);
 
         return redirect()->back();
     }

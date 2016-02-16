@@ -50,6 +50,8 @@ class PersonService
         $person = $this->model->create($data);
         $letter = strtoupper(substr($person->nickname,0,1));
 
+        session(['success' => "o contato [{$person->nickname}] foi criado com sucesso!"]);
+
         return redirect()->route('notebook.letter', compact('letter'));
     }
     /**
@@ -74,6 +76,8 @@ class PersonService
         $person->fill($data)->save();
         $letter = strtoupper(substr($person->nickname,0,1));
 
+        session(['success' => "o contato [{$person->nickname}] foi atualizado com sucesso!"]);
+
         return redirect()->route('notebook.letter', compact('letter'));
     }
     /**
@@ -85,10 +89,14 @@ class PersonService
     public function destroy($id)
     {
         $person = $this->model->find($id);
+        $nickname = $person->nickname;
 
         if( count($person) != 1) return view('errors.404');
 
-        $person->delete();
+        if( $person->delete() )
+            session(['success' => "o contato [{$nickname}] foi removido com sucesso!"]);
+        else
+            session(['error' => "o contato [{$nickname}] não foi removido!"]);
 
         return redirect()->back();
     }

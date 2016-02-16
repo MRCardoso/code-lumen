@@ -4,41 +4,44 @@
             <i class="fa fa-{{ $person->sex == 'F' ? 'female': 'male'}}"></i>
             {{ $person->nickname }}
             <div class="pull-right">
-                <a href="{{ route('person.edit', ['id' => $person->id]) }}" class="btn btn-success btn-xs" data-toggle="tooltip" data-placement="top" title="Edit the person(not implement!)">
-                    <i class="fa fa-edit"></i>
-                </a>
-                <a href="#" class="remove-link btn btn-danger btn-xs"
-                   data-url="{{ route('person.destroy', ['id' => $person->id]) }}" data-toggle="modal" data-target=".modal-remove">
-                    <i class="fa fa-remove" data-toggle="tooltip" data-placement="top" title="Remove the person"></i>
-                </a>
+                @include('partials._actionsTable', [
+                    'module' => 'person',
+                    'data' => ['id' => $person->id]
+                ])
             </div>
         </h3>
     </div>
     <div class="panel-body">
-        <h4> {{ $person->name }}</h4>
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>Phones</strong>
-                <div class="btn-row pull-right">
-                    <a href="{{ route('phone.create', ['person_id' => $person->id]) }}" class="btn btn-primary btn-xs">New Phone</a>
+        <h4 class="breadcrumb">
+            {{ $person->name }}
+        </h4>
+        <div>
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+                <li role="presentation" class="active">
+                    <a href="#phone-{{ $person->id }}" aria-controls="phone-{{ $person->id }}" role="tab" data-toggle="tab">
+                        <i class="fa fa-phone"></i>
+                        Telefone
+                        <i class="badge">{{$person->phones()->count()}}</i>
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="#email-{{ $person->id }}" aria-controls="email-{{ $person->id }}" role="tab" data-toggle="tab">
+                        <i class="fa fa-envelope-o"></i>
+                        E-mail
+                        <i class="badge">{{$person->emails()->count()}}</i>
+                    </a>
+                </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="phone-{{ $person->id }}">
+                    @include('phone._phone', ['phones' => $person->phones])
+                </div>
+                <div role="tabpanel" class="tab-pane" id="email-{{ $person->id }}">
+                    @include('email._email', ['emails' => $person->emails])
                 </div>
             </div>
-            <table class="table table-condensed table-hover table-bordered">
-                @foreach($person->phones as $phone)
-                    <tr>
-                        <td>{{ $phone->description }}</td>
-                        <td>{{ $phone->maskNumber }}</td>
-                        <td>
-                            <a href="{{ route('phone.edit', ['id' => $phone->id,'person_id'=>$person->id ]) }}" class="label label-primary" data-toggle="tooltip" data-placement="top" title="Edit the Phone">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a href="#" class="remove-link label label-danger" data-url="{{ route('phone.destroy', ['id' => $phone->id, 'person_id' => $person->id]) }}" data-toggle="modal" data-target=".modal-remove">
-                                <i class="fa fa-remove" data-toggle="tooltip" data-placement="top" title="Remove the phone"></i>
-                            </a>
-                        </td>
-                    </tr>
-                @endforeach
-            </table>
         </div>
     </div>
 </div>

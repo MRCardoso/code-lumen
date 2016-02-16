@@ -40,7 +40,7 @@ $app->post('contact', [
     'as' => 'person.store',
     'uses' => 'PersonController@store'
 ]);
-$app->get('contact/edit/{id}', [
+$app->get('contact/{id}/edit', [
     'as' => 'person.edit',
     'uses' => 'PersonController@edit'
 ]);
@@ -72,4 +72,29 @@ $app->put('person/{person_id}/phone/{id}', [
 $app->delete('person/{person_id}/phone/{id}/destroy', [
     'as' => 'phone.destroy',
     'uses' => 'PhoneController@destroy'
+]);
+/*
+ | ----------------------------------------------------------
+ | Email
+ | ----------------------------------------------------------
+ */
+$app->get('person/{person_id}/email/create', [
+    'as' => 'email.create',
+    'uses' => 'EmailController@create'
+]);
+$app->post('person/{person_id}/email', [
+    'as' => 'email.store',
+    'uses' => 'EmailController@store'
+]);
+$app->get('person/{person_id}/email/{id}/edit', [
+    'as' => 'email.edit',
+    'uses' => 'EmailController@edit'
+]);
+$app->put('person/{person_id}/email/{id}', [
+    'as' => 'email.update',
+    'uses' => 'EmailController@update'
+]);
+$app->delete('person/{person_id}/email/{id}/destroy', [
+    'as' => 'email.destroy',
+    'uses' => 'EmailController@destroy'
 ]);
